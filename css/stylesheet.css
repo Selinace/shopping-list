@@ -111,10 +111,26 @@ input {
     padding: 5px;
     -webkit-font-smoothing: antialiased;
 }
-.list ol{
-    list-style-type: decimal;
 
+
+.item {
+    color: white; 
+    font-family: 'La Belle Aurore', cursive;
+    margin-left: 10px;
+    position: relative;
+    font-size: 26px;
+    font-weight: bold;
+        -webkit-font-smoothing: antialiased;
 }
-
+ol {
+    font-family: 'La Belle Aurore', cursive;
+    -webkit-font-smoothing: antialiased;
+    list-style-type: decimal;
+    margin-left: 25px;
+    padding-left: 260px;
+}
+.checked {
+    text-decoration: line-through;
+}
 
 

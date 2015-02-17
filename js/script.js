@@ -14,11 +14,12 @@ $(document).ready(function() {
     $('#add').click(function() {
         addItem();
     });
-    $('input').keypress(function(e) {
+    $('input').keydown(function(e) {
         if (e.keyCode == '13') {
             e.preventDefault();
            addItem();
         }
+
     });
     $('#clearAll').mousedown(function() {
          $('.item').remove();
