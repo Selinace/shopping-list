@@ -1,51 +1,53 @@
-$(document).ready(function() {
-    var addItem = function() {
-        var toAdd = $('input[name=checkListItem]').val();
-        if(toAdd.length != 0){
-        $('.list').append('<li class="item">' + toAdd + '</li>');
-        $('.item').sortable();
-        status();
-        $('input').val("");
-        }
-        else {
-            alert("Blanks are not valid entries!")
-        }
-    };
-    $('#add').click(function() {
-        addItem();
-    });
-    $('input').keydown(function(e) {
-        if (e.keyCode == '13') {
-            e.preventDefault();
-           addItem();
-        }
+'use strict';
 
-    });
-    $('#clearAll').mousedown(function() {
-         $('.item').remove();
-         status(); 
-    });
-    $('#clearChecked').mousedown(function() {
-         $('.checked').remove();
-         status();
-    });
-    $(document).on('click', '.item', function() {
-        $(this).toggleClass('checked');
-         status();
-    });
-    $(document).on('dblclick', '.item', function() {
-        $(this).remove();
-         status();
-    });
-    var status = function() {
-        total = $('.item').length;
-        console.log(total);
-        done = $('.checked').length;
-        console.log(done);
-        $('span').html('<span>' + (total-done) + '/' + total + '</span>');
-    };
-    var verify = function() {
-        $('toAdd').trim().length
+$(document).ready(function() {
+  var $clearAll = $('#clearAll');
+  var $form = $('form');
+  var $itemToAdd = $('input[name=checkListItem]');
+  var $list = $('#list');
+  var $status = $('#status');
+  var EMPTY_STRING = '';
+
+  function addItem(toAdd) {
+    if (toAdd !== EMPTY_STRING) {
+      $list.append('<li class="item">' + toAdd + '</li>');
+      status();
+    } else {
+      alert('Blanks are not valid entries!');
     }
-    $('ol').sortable();
+  }
+
+  function status() {
+    var total = $('.item').length;
+    console.log(total);
+    var done = $('.checked').length;
+    console.log(done);
+    $status.html('<span>' + (total - done) + '/' + total + '</span>');
+  }
+
+  $form.on('submit', function(event) {
+    event.preventDefault();
+    addItem($itemToAdd.val());
+    $itemToAdd.val('');
+  });
+
+  $clearAll.on('click', function() {
+    $('.item').remove();
+    status();
+  });
+
+  $list.on('click', function(event) {
+    var $el = $(event.target);
+    if ($el.is('.item')) {
+      $el.toggleClass('checked');
+      status();
+    }
+  });
+  $list.on('dblclick', function(event) {
+    var $el = $(event.target);
+    if ($el.is('.item')) {
+      $el.remove();
+      status();
+    }
+  });
 });

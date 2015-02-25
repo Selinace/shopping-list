@@ -1,36 +1,38 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-	<link rel="stylesheet" href="css/stylesheet.css">
-	<link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
-	<script src="https://code.jquery.com/jquery.min.js"></script>
-	<script src="js/script.js"></script>
-</head>
-<body>
-	<section class="text">
-	<h1>Shopping List</h1>
-	<p>
-		One click: check or uncheck item.
-		<br/>
-		Double click: clear checked
-	</p>
-	</section>
-	<form name="checkListForm"> 
-	<input type="text" name="checkListItem">	
-	<div class="buttons">
-		<button class="b1"> Add item
-		</button>
-		<button class="b2">
-			Clear list
-		</button>
-	</div> 
-	</form>
-	<br/>
-	<ol class="list">
-	</ol>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <section class="text">
+      <h1>Shopping List</h1>
+      <p>
+        One click: check or uncheck item.
+        <br/>
+        Double click: clear checked
+      </p>
+    </section>
+    <form name="checkListForm"> 
+      <input type="text" name="checkListItem">	
+      <div class="buttons">
+        <button class="b1" type='submit'> Add item
+        </button>
+        <button class="b2" id=clearAll>
+          Clear list
+        </button>
+      </div> 
+    </form>
+    <br/>
+    <div id=status></div>
+    <ol id="list">
+    </ol>
+
+  </body>
 
 </html>
